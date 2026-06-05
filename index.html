@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cold AI — Logo System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #030A0A;
+      color: #CEDADB;
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 56px 128px;
+    }
+
+    /* ── Page header ──────────────────────── */
+    .pg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(81,92,92,0.22);
+    }
+
+    .pg-id {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .pg-brand {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6DADBE;
+    }
+
+    .pg-desc {
+      font-size: 11px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.06em;
+    }
+
+    .pg-meta {
+      font-size: 10px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.07em;
+      line-height: 1.9;
+      text-align: right;
+    }
+
+    /* ── Hero ─────────────────────────────── */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 48px;
+      margin-bottom: 80px;
+      border: 1px solid rgba(81,92,92,0.14);
+      background: #030A0A;
+      position: relative;
+    }
+
+    .hero-corner {
+      position: absolute;
+      font-size: 9px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-corner.bl { bottom: 18px; left: 22px; }
+    .hero-corner.br { bottom: 18px; right: 22px; }
+
+    /* ── Sections ─────────────────────────── */
+    section { margin-bottom: 72px; }
+
+    .sec-hd {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .sec-n {
+      font-size: 10px;
+      font-weight: 500;
+      color: #12768A;
+      letter-spacing: 0.1em;
+    }
+
+    .sec-t {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: #515C5C;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .sec-hr {
+      flex: 1;
+      height: 1px;
+      background: rgba(81,92,92,0.18);
+    }
+
+    /* ── Logo grid ────────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(81,92,92,0.18);
+      gap: 1px;
+      background: rgba(81,92,92,0.18);
+    }
+
+    .lg-card {
+      background: #030A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 288px;
+      padding: 56px 40px 72px;
+      position: relative;
+    }
+
+    .lg-card.alt { background: #0B3F43; }
+
+    .lg-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 22px;
+      font-size: 9px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .alt .lg-tag { color: rgba(206,218,219,0.28); }
+
+    /* ── Lockup containers ────────────────── */
+    .h-lock {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .v-lock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* ── Wordmark ─────────────────────────── */
+    .wm {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #CEDADB;
+      line-height: 1;
+    }
+
+    .wm .cold {
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .wm .ai {
+      font-weight: 300;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Concept note ─────────────────────── */
+    .concept-note {
+      margin-top: 22px;
+      padding: 16px 22px;
+      border-left: 1px solid rgba(18,118,138,0.35);
+      font-size: 10.5px;
+      font-weight: 300;
+      color: rgba(206,218,219,0.38);
+      letter-spacing: 0.04em;
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    /* ── Scale test ───────────────────────── */
+    .scale-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 60px;
+      padding: 48px 0 40px;
+      border-top: 1px solid rgba(81,92,92,0.14);
+    }
+
+    .scale-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .scale-label {
+      font-size: 9px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Palette ──────────────────────────── */
+    .palette {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .sw {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .sw-chip {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+    }
+
+    .sw-name {
+      font-size: 9px;
+      font-weight: 400;
+      color: #515C5C;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+    }
+
+    .sw-hex {
+      font-size: 9px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.03em;
+      opacity: 0.5;
+    }
+
+    /* ── Type specimen ────────────────────── */
+    .type-specimen {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 48px 0 0;
+      border-top: 1px solid rgba(81,92,92,0.14);
+    }
+
+    .ts-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .ts-meta {
+      font-size: 9px;
+      font-weight: 300;
+      color: #515C5C;
+      letter-spacing: 0.1em;
+      width: 120px;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Page header ────────────────────── -->
+  <header class="pg-header">
+    <div class="pg-id">
+      <div class="pg-brand">Cold AI</div>
+      <div class="pg-desc">Logo System — Primary Mark</div>
+    </div>
+    <div class="pg-meta">
+      Version 1.0 · Concept A<br>
+      Precision Ping<br>
+      June 2026
+    </div>
+  </header>
+
+
+  <!-- ── Hero ───────────────────────────── -->
+  <div class="hero">
+    <div class="h-lock">
+      <svg width="68" height="68" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer arc — #6DADBE, gap opens right (30°→330° clockwise, 300°) -->
+        <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Middle arc — depth layer (45% opacity) -->
+        <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+        <!-- Inner arc — #6DADBE -->
+        <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Origin point -->
+        <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+      </svg>
+      <div class="wm" style="font-size:38px;">
+        <span class="cold">Cold</span><span class="ai"> AI</span>
+      </div>
+    </div>
+    <div class="hero-corner bl">Primary Lockup</div>
+    <div class="hero-corner br">#030A0A</div>
+  </div>
+
+
+  <!-- ── 01: Logo versions ──────────────── -->
+  <section>
+    <div class="sec-hd">
+      <span class="sec-n">01</span>
+      <span class="sec-t">Logo Versions</span>
+      <div class="sec-hr"></div>
+      <span class="sec-t">Primary · Eight Ball #030A0A</span>
+    </div>
+
+    <div class="logo-grid">
+
+      <!-- Horizontal lockup -->
+      <div class="lg-card">
+        <div class="h-lock">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+          </svg>
+          <div class="wm" style="font-size:23px;">
+            <span class="cold">Cold</span><span class="ai"> AI</span>
+          </div>
+        </div>
+        <div class="lg-tag">01 — Horizontal Lockup</div>
+      </div>
+
+      <!-- Stacked lockup -->
+      <div class="lg-card">
+        <div class="v-lock">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+          </svg>
+          <div class="wm" style="font-size:19px; letter-spacing:0.04em;">
+            <span class="cold">Cold</span><span class="ai"> AI</span>
+          </div>
+        </div>
+        <div class="lg-tag">02 — Stacked Lockup</div>
+      </div>
+
+      <!-- Icon mark -->
+      <div class="lg-card">
+        <svg width="84" height="84" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="filter: drop-shadow(0 0 7px rgba(109,173,190,0.14));">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="lg-tag">03 — Icon Mark</div>
+      </div>
+
+      <!-- Wordmark only -->
+      <div class="lg-card">
+        <div class="wm" style="font-size:30px;">
+          <span class="cold">Cold</span><span class="ai"> AI</span>
+        </div>
+        <div class="lg-tag">04 — Wordmark</div>
+      </div>
+
+    </div>
+
+    <div class="concept-note">
+      Option A — Precision Ping. Three deconstructed concentric arcs open rightward from a precision center point. The 60° gap faces the target; the signal is always in transit. Mark and wordmark form a single directional read.
+    </div>
+  </section>
+
+
+  <!-- ── 02: Alternate surface ──────────── -->
+  <section>
+    <div class="sec-hd">
+      <span class="sec-n">02</span>
+      <span class="sec-t">Alternate Surface</span>
+      <div class="sec-hr"></div>
+      <span class="sec-t">Ghostlands Coal · #0B3F43</span>
+    </div>
+
+    <div class="logo-grid">
+
+      <div class="lg-card alt">
+        <div class="h-lock">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+          </svg>
+          <div class="wm" style="font-size:23px;">
+            <span class="cold">Cold</span><span class="ai"> AI</span>
+          </div>
+        </div>
+        <div class="lg-tag">01 — Horizontal Lockup</div>
+      </div>
+
+      <div class="lg-card alt">
+        <div class="v-lock">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+          </svg>
+          <div class="wm" style="font-size:19px;">
+            <span class="cold">Cold</span><span class="ai"> AI</span>
+          </div>
+        </div>
+        <div class="lg-tag">02 — Stacked Lockup</div>
+      </div>
+
+      <div class="lg-card alt">
+        <svg width="84" height="84" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="lg-tag">03 — Icon Mark</div>
+      </div>
+
+      <div class="lg-card alt">
+        <div class="wm" style="font-size:30px;">
+          <span class="cold">Cold</span><span class="ai"> AI</span>
+        </div>
+        <div class="lg-tag">04 — Wordmark</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── 03: Scale test ─────────────────── -->
+  <section>
+    <div class="sec-hd">
+      <span class="sec-n">03</span>
+      <span class="sec-t">Scale Test — Icon Mark</span>
+      <div class="sec-hr"></div>
+    </div>
+
+    <div class="scale-row">
+
+      <div class="scale-item">
+        <svg width="128" height="128" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="scale-label">512px</div>
+      </div>
+
+      <div class="scale-item">
+        <svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="scale-label">64px</div>
+      </div>
+
+      <div class="scale-item">
+        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="scale-label">32px</div>
+      </div>
+
+      <div class="scale-item">
+        <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="scale-label">24px</div>
+      </div>
+
+      <div class="scale-item">
+        <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.45 33.5A19 19 0 1 1 40.45 14.5" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34.39 30A12 12 0 1 1 34.39 18" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M29.20 27A6 6 0 1 1 29.20 21" stroke="#6DADBE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#6DADBE"/>
+        </svg>
+        <div class="scale-label">16px</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── 04: Type specimen ───────────────── -->
+  <section>
+    <div class="sec-hd">
+      <span class="sec-n">04</span>
+      <span class="sec-t">Wordmark Specimen</span>
+      <div class="sec-hr"></div>
+      <span class="sec-t">Space Grotesk</span>
+    </div>
+
+    <div class="type-specimen">
+
+      <div class="ts-row">
+        <div class="ts-meta">
+          Medium 500<br>
+          +0.06em tracking<br>
+          #CEDADB
+        </div>
+        <div class="wm" style="font-size:42px;">
+          <span class="cold">Cold</span>
+        </div>
+      </div>
+
+      <div class="ts-row">
+        <div class="ts-meta">
+          Light 300<br>
+          +0.06em tracking<br>
+          #CEDADB
+        </div>
+        <div class="wm" style="font-size:42px;">
+          <span class="ai">AI</span>
+        </div>
+      </div>
+
+      <div class="ts-row">
+        <div class="ts-meta">
+          Combined<br>
+          hierarchy
+        </div>
+        <div class="wm" style="font-size:42px;">
+          <span class="cold">Cold</span><span class="ai"> AI</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── 05: Color system ────────────────── -->
+  <section>
+    <div class="sec-hd">
+      <span class="sec-n">05</span>
+      <span class="sec-t">Color System</span>
+      <div class="sec-hr"></div>
+    </div>
+
+    <div class="palette">
+
+      <div class="sw">
+        <div class="sw-chip" style="background:#6DADBE;"></div>
+        <div class="sw-name">Water Music</div>
+        <div class="sw-hex">#6DADBE</div>
+      </div>
+
+      <div class="sw">
+        <div class="sw-chip" style="background:#12768A;"></div>
+        <div class="sw-name">Alpine Landing</div>
+        <div class="sw-hex">#12768A</div>
+      </div>
+
+      <div class="sw">
+        <div class="sw-chip" style="background:#CEDADB;"></div>
+        <div class="sw-name">Light Detroit</div>
+        <div class="sw-hex">#CEDADB</div>
+      </div>
+
+      <div class="sw">
+        <div class="sw-chip" style="background:#515C5C;"></div>
+        <div class="sw-name">Bovine</div>
+        <div class="sw-hex">#515C5C</div>
+      </div>
+
+      <div class="sw">
+        <div class="sw-chip" style="background:#030A0A; border:1px solid rgba(81,92,92,0.3);"></div>
+        <div class="sw-name">Eight Ball</div>
+        <div class="sw-hex">#030A0A</div>
+      </div>
+
+      <div class="sw">
+        <div class="sw-chip" style="background:#0B3F43;"></div>
+        <div class="sw-name">Ghostlands Coal</div>
+        <div class="sw-hex">#0B3F43</div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
